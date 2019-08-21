@@ -1,0 +1,21 @@
+<div>
+  <p>{{question}}:</p>
+  <table>
+    <thead>
+      <tr>
+        {{#each children}}
+          <th>{{question}}</th>
+        {{/each}}
+      </tr>
+    </thead>
+    <tbody>
+      {{#each value as |val|}}
+        <tr>
+          {{#each ../children}}
+            <td>{{lookup val controlName}}</td>
+          {{/each}}
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form PDF</title>
+
+  <style>
+   @page {
+     size: A4;
+   }
+   * {
+     box-sizing: border-box;
+   }
+   html {
+     width: 210mm;
+     height: 297 mm;
+     font-family: PT Sans, sans-serif;
+     font-size: 10pt;
+     font-weight: normal;
+     line-height: 1.5;
+     -webkit-print-color-adjust: exact;
+   }
+ 
+   body {
+     height: 100%;
+     margin: 0;
+     padding: 5mm;
+   }
+
+   ul {
+    padding: 0;
+    list-style: none;
+   }
+
+   p {
+     margin: 0;
+   }
+
+   table {
+     border: 1px solid black;
+     border-collapse: collapse;
+   }
+
+   th {
+     font-weight: normal;
+     border: 1 px solid;
+   }
+
+   td {
+     border: 1 px solid;
+   }
+
+   .page-header {
+     margin-bottom: 2mm;
+     text-align: center;
+   }
+
+   .form-item {
+     margin-bottom: 2mm;
+   }
+
+   .section {
+     border: 1 px dotted;
+   }
+
+   .section-item {
+     margin-bottom: 2mm;
+   }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <h1>{{formName}}</h1>
+    <p>{{description}}</p>
+  </header>
+
+  <main>
+    <ul>
+      {{#each data as |formItem|}}
+        <li class="form-item">
+          {{> (lookup formItem 'type') formItem}}
+        </li>
+      {{/each}}
+    </ul>
+  </main>
+</body>
+</html>
